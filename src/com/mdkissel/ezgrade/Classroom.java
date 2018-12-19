@@ -1,23 +1,38 @@
 package com.mdkissel.ezgrade;
 
 import com.mdkissel.ezgrade.util.ConsoleHelper;
+import com.mdkissel.ezgrade.util.GradeHelper;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Classroom {
 
     public List<Student> students;
+    public GradeHelper gh;
+    public List<Assignment> assignments;
+    public int period;
 
-    public Classroom()
+    private String class_name;
+
+
+    public Classroom(String name, int period)
     {
-        students = new ArrayList<Student>();
+        this.students = new ArrayList<Student>();
+        this.assignments = new ArrayList<Assignment>();
+        this.class_name = name;
+        this.period = period;
+        gh = new GradeHelper(this);
     }
 
     public void addStudent(Student student)
     {
         if(students.size() <= 100) {
             students.add(student);
+            Collections.sort(students, Comparator.comparing(Student::getFormattedName));
+
         } else {
             ConsoleHelper.printLog("Not enough memory for classroom over 100 students");
         }
@@ -42,7 +57,5 @@ public class Classroom {
     {
         return this.students.size();
     }
-
-
 
 }

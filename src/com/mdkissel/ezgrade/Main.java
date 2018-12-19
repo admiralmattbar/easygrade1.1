@@ -12,25 +12,22 @@ public class Main {
 
         ConsoleHelper.printLog("Starting program...");
 
-
-        Classroom history = new Classroom();
-        Student maria = new Student();
-        maria.last_name = "Luce";
-        maria.first_name = "Maria";
+        Classroom history = new Classroom("History", 4);
+        Student maria = new Student("Maria", "Luce");
         history.addStudent(maria);
-        Student raul = new Student();
-        raul.last_name = "Buggy";
-        raul.first_name = "Raul";
-        history.addStudent(raul);
-        Student carlos = new Student();
-        carlos.last_name = "Homey";
-        carlos.first_name = "Carlos";
+        Student rammy = new Student("Rammy", "Mina");
+        history.addStudent(rammy);
+        Student carlos = new Student("Carlos", "Homey");
         history.addStudent(carlos);
+        Student allan = new Student("Allan", "Homey");
+        history.addStudent(allan);
         System.out.println(history.students.size());
-        //ConsoleHelper.printLog(history.students[50].getFullName());
+
+        Assignment test  = new Assignment("Test", 0.2f, history, 10);
+
+
 
         history.printRoster();
-
     }
 
 }
