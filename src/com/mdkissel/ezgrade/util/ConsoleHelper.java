@@ -1,16 +1,29 @@
 package com.mdkissel.ezgrade.util;
 
+import com.mdkissel.ezgrade.Assignment;
+import com.mdkissel.ezgrade.Classroom;
 import com.mdkissel.ezgrade.Main;
+import com.mdkissel.ezgrade.Student;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-public class ConsoleHelper {
+public class ConsoleHelper
+{
 
     public static void printLog(String message)
     {
 
-        System.out.println(getTime() + " " + message + ".");
+        System.out.println(getTime() + " " + message);
+    }
+
+    public static void printGrade(Assignment as, Classroom cl, Student stud)
+    {
+        String stud_name = stud.getFullName();
+        String class_name = cl.getClassName();
+        Integer period = cl.getClassPeriod();
+        String assignment = as.getAssignmentName();
+        printLog(stud_name + " is in " + class_name + " during period " + period.toString() + " working on " + assignment);
     }
 
     private static String addZerosSecMin(Integer number)

@@ -23,11 +23,18 @@ public class Main {
         history.addStudent(allan);
         System.out.println(history.students.size());
 
-        Assignment test  = new Assignment("Test", 0.2f, history, 10);
+        Assignment test  = new Assignment("Test", 0.5f, history, 20);
 
-
+        Assignment quiz = new Assignment("Quiz", 0.1f, history, 10);
+        history.gradeClassAssignment(test, 15.2f, allan);
 
         history.printRoster();
+
+        ConsoleHelper.printGrade(test, history, rammy);
+
+        ConsoleHelper.printLog(allan.map.get(test).toString());
+
+
     }
 
 }
